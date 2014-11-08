@@ -1,0 +1,7 @@
+dnp:
+  build: .
+  ports:
+    - "80:80"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+  
