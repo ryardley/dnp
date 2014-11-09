@@ -4,4 +4,5 @@ run_cmd "docker run \
           -p 443:443 \
           -v /var/run/docker.sock:/tmp/docker.sock \
           -v /var/docker/dnp/sites:/etc/nginx/sites-enabled \
+          -v /var/docker:/etc/nginx/ssl \
           $APPLICATION_NAME"
