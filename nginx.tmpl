@@ -57,10 +57,10 @@ upstream {{ $host }} {
 server {
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
-  {{ $isSsl := false }}
-
   {{ range $index, $value := $containers }}
-    {{ $isSsl := $value.Env.IS_SSL }}
+    {{ if $value.Env.IS_SSL }}
+      {{ $isSsl := $value.Env.IS_SSL }}
+    {{ end }}
   {{ end }}
 
   {{ if $isSsl }}
