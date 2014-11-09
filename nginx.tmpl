@@ -57,9 +57,15 @@ upstream {{ $host }} {
 server {
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
+  {{ $isSsl := false }}
+
   {{ range $index, $value := $containers }}
+    # CHECKING CONTAINERS
     {{ if $value.Env.IS_SSL }}
+      # IS_SSL IS TRUE
       {{ $isSsl := $value.Env.IS_SSL }}
+    {{ else }}
+      # IS_SSL IS FALSE
     {{ end }}
   {{ end }}
 
