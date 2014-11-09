@@ -57,6 +57,16 @@ upstream {{ $host }} {
 server {
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
+  {{ $isSsl := false }}
+
+  {{ range $index, $value := $containers }}
+    {{ $isSsl := $value.Env.IS_SSL }}
+  {{ end }}
+
+  {{ if $isSsl }}
+      # THIS HAS SSL
+  {{ end }}
+
   server_name {{ $host }};
   proxy_buffering off;
   error_log /proc/self/fd/2;
