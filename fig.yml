@@ -6,4 +6,3 @@ dnp:
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock
     - /var/docker/dnp/sites:/etc/nginx/sites-enabled
-  
