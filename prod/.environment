@@ -1,0 +1,9 @@
+APPLICATION_NAME=ryardley/dnp
+
+run_cmd(){
+  echo ''
+  echo = RUNNING = = = = = = = = = = = = = = = = =
+  echo $1
+  echo = = = = = = = = = = = = = = = = = = = = = =
+  eval "${1}"
+}
