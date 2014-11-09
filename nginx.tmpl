@@ -57,20 +57,14 @@ upstream {{ $host }} {
 server {
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
-  {{ $isSsl := false }}
-
   {{ range $index, $value := $containers }}
-    # CHECKING CONTAINERS
-    {{ if $value.Env.IS_SSL }}
-      # IS_SSL IS TRUE
-      {{ $isSsl := $value.Env.IS_SSL }}
-    {{ else }}
-      # IS_SSL IS FALSE
-    {{ end }}
+  {{ if $value.Env.IS_SSL }}
+  # IS_SSL IS TRUE
+  #ssl on;
+  #ssl_certificate /etc/nginx/ssl/{{ $host }}/certs/nginx.crt
+  #ssl_certificate_key /etc/nginx/ssl/{{ $host }}/certs/nginx.key
+  #ssl_trusted_certificate /etc/nginx/ssl/{{ host }}/certs/nginx.pem;
   {{ end }}
-
-  {{ if $isSsl }}
-      # THIS HAS SSL
   {{ end }}
 
   server_name {{ $host }};
