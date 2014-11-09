@@ -5,5 +5,5 @@ dnp:
     - "443:443" 
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock
-    - /var/docker/dnp/sites:/etc/nginx/sites-enabled
+    - /etc/nginx/sites-enabled
   
