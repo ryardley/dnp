@@ -1,4 +1,5 @@
 APPLICATION_NAME=ryardley/dnp
+SUPERVISOR_PATH=/etc/supervisor/conf.d
 
 run_cmd(){
   echo ''
