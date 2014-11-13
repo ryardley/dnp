@@ -60,6 +60,7 @@ server {
 
   listen 80;
   server_name {{ $host }};
+
   {{ range $ssl_cert, $cont := groupBy $containers "Env.SSL_CERT" }}
        {{ if $ssl_cert }} 
             listen 443 ssl; 
