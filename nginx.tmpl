@@ -58,17 +58,27 @@ server {
 
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
-  {{ range $index, $value := $containers }}
-  {{ if $value.Env.IS_SSL }}
-  # IS_SSL IS TRUE
   listen 80;
-  listen 443 ssl;
-  ssl on;
-  ssl_certificate /etc/nginx/ssl/{{ $host }}/certs/nginx.crt;
-  ssl_certificate_key /etc/nginx/ssl/{{ $host }}/certs/nginx.key;
-  #ssl_trusted_certificate /etc/nginx/ssl/{{ $host }}/certs/nginx.pem;
+  server_name {{ $host }};
+  {{ range $ssl_cert, $cont := groupBy $containers "Env.SSL_CERT" }}
+       {{ if $ssl_cert }} 
+            listen 443 ssl; 
+            ssl on;
+            ssl_certificate /etc/nginx/ssl/{{ $ssl_cert }}
+       {{ end }}
   {{ end }}
-  {{ end }}
+  
+  {{ range $ssl_key, $cont := groupBy $containers "Env.SSL_KEY" }}
+       {{ if $ssl_key }}
+            ssl_certificate_key /etc/nginx/ssl/{{$ssl_key}}
+       {{end}}
+  {{ end }} 
+  
+  {{ range $ssl_pem, $cont := groupBy $containers "Env.SSL_PEM" }}
+       {{ if $ssl_pem}}
+            ssl_trusted_certificate /etc/nginx/ssl/{{$ssl_pem}}
+       {{end}}
+  {{ end }}  
 
   server_name {{ $host }};
   proxy_buffering off;
