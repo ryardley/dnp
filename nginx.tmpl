@@ -13,6 +13,11 @@ map $http_upgrade $proxy_connection {
 }
 
 server {
+  server_name "~^www\.(.*)$" ;
+  return 301 $scheme://$1$request_uri ;
+}
+
+server {
   listen 80 default_server;
   server_name _; # This is just an invalid value which will never trigger on a real hostname.
   error_log /proc/self/fd/2;
