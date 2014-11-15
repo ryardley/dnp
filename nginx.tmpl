@@ -13,6 +13,8 @@ map $http_upgrade $proxy_connection {
 }
 
 server {
+  listen 80;
+  listen 443;
   server_name "~^www\.(.*)$" ;
   return 301 $scheme://$1$request_uri ;
 }
