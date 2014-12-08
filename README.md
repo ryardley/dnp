@@ -1,3 +1,5 @@
+This fork is currently in WIP as I customise it for my deployment process. Please use the upstream branch. - Rudi
+
 nginx-proxy sets up a container running nginx and [docker-gen][1].  docker-gen generate reverse proxy configs for nginx and reloads nginx when containers they are started and stopped.
 
 See [Automated Nginx Reverse Proxy for Docker][2] for why you might want to use this.
