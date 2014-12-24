@@ -1,5 +1,6 @@
 source .environment
 mkdir -p /var/docker/dnp/logs/
+mkdir -p /var/docker/dnp/certs/
 mkdir -p $SUPERVISOR_PATH
 WD=$(pwd)
 CURRENT_SCRIPT=$(ls $SUPERVISOR_PATH/dnp.conf)
