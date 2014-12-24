@@ -1,5 +1,6 @@
 source .environment
 mkdir -p /var/docker/dnp/logs/
+mkdir -p $SUPERVISOR_PATH
 WD=$(pwd)
 CURRENT_SCRIPT=$(ls $SUPERVISOR_PATH/dnp.conf)
 if [ -n "$CURRENT_SCRIPT" ]; then rm $SUPERVISOR_PATH/dnp.conf; fi
