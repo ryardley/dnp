@@ -1,4 +1,4 @@
-This fork is currently in WIP as I customise it for my deployment process. Please use the upstream branch. - Rudi
+*This fork is currently in WIP as I customise it for my deployment process. Please use the upstream branch: https://github.com/jwilder/nginx-proxy - Rudi*
 
 ----
 
